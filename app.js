@@ -260,6 +260,7 @@ const App = (function () {
             const item = ItemCtrl.retrieveItem(ID)
             UICtrl.showInsideForm(item)
 
+
         }
 
     }
@@ -269,6 +270,10 @@ const App = (function () {
         let formData = UICtrl.getAddedItem()
         let object = ItemCtrl.updateItem(formData)
         UICtrl.showSingleItemChange(object)
+        // getting calories from Itemctrl and showing it to UI
+        const totalCalories = ItemCtrl.getTotalCalories()
+        UICtrl.showCalories(totalCalories)
+
         Storage.update(object)
 
     }
@@ -277,6 +282,10 @@ const App = (function () {
         e.preventDefault()
         let objectId = ItemCtrl.deleteItem()
         UICtrl.deleteSingleItem(objectId)
+        // getting calories from Itemctrl and showing it to UI
+        const totalCalories = ItemCtrl.getTotalCalories()
+        UICtrl.showCalories(totalCalories)
+
         Storage.delete(objectId)
     }
 
@@ -288,6 +297,10 @@ const App = (function () {
     function deleteAll() {
         UICtrl.deleteAllItem()
         ItemCtrl.deleteAllItem()
+        // getting calories from Itemctrl and showing it to UI
+        const totalCalories = ItemCtrl.getTotalCalories()
+        UICtrl.showCalories(totalCalories)
+
         Storage.deleteAll()
     }
 
